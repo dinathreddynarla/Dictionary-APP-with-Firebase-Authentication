@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary and Thesaurus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dictionary.css">
+</head>
+<body>
+    <div class="header">
+        <h1 id="user">Welcome, User!</h1>
+        <button id="profile">Profile</button>
+        <div class="profile_data">
+            <span class="Name">Name</span>
+            <span class="username">Username</span>
+            <span class="contact">Contact</span>
+            <button id="history">History</button>
+            <button id="logout">Logout</button>
+        </div>
+    </div>
+    <h1>Dictionary</h1>
+    <div id="search">
+        <label for="inp-word">Enter a word:</label>
+            <input type="text" id="inp-word" placeholder="Type here..." autocomplete="off">
+            <button id="search-btn"> <i class="fas fa-search"></i></button>
+    </div>
+    <div id="suggestions"></div>
+    <div id="result"></div>
+    <div class="spinner" id="loadingSpinner" style="display: none;"></div>
+    <audio id="sound"></audio>
+    <script src="loggedin.js" type="module"></script>
+    <script src="dictionary.js"></script>
+        
+</body>
+</html>
