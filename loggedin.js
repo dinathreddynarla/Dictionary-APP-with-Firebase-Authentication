@@ -33,6 +33,7 @@ onAuthStateChanged(auth, (user) => {
                   Gmail.innerHTML=`<b>UserName:</b> ${userdata.email}`
                 let History = userdata.history
                 console.log(History)
+                displayHistory.innerHTML=""
                 let count = 1
                 History.forEach(element => {
                   let ele = document.createElement("h3")
@@ -120,6 +121,7 @@ async function addhistory() {
           let History = userdata.history
                 console.log(History)
                 let count = 1
+                displayHistory.innerHTML=""
                 History.forEach(element => {
                   let ele = document.createElement("h3")
                   ele.innerText=`${count}. ${element}`
