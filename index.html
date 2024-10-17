@@ -39,10 +39,36 @@
 
             <input type="submit" value="Sign Up" id="signup" name="signup_submit">
         </div>
+        <div id="userForm">
+            <h3>Complete your profile</h3>
+            <form id="profileForm">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" required><br>
+              
+              <label for="email">Email:</label>
+              <input type="email" id="email" required><br>
+              <label for="username">username</label>me:</label>
+              <input type="text" id="username" required><br>
+              
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone"><br>
+              
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+          <div id="passwordReset">
+            <h2>Reset Your Password</h2>
+            <label for="reset-email">Email:</label>
+            <input type="email" id="reset-email" name="email" placeholder="enter valid email" required>
+            <input type="submit" value="Send Reset Mail" id="resetPassword" name="reset_Password">
+        </div>
+          
         <br><br>
         <div class="toggle-buttons">
             <button onclick="showForm('loginForm')">Login</button>
-            <button onclick="showForm('signupForm')">Sign Up</button>
+            <button onclick="showForm('signupForm')">Sign Up</button><br>
+            <button id="googlesignin">Sign Up with google</button><br>
+            <button onclick="showForm('passwordReset')">Forgot Password ?</button>
         </div>
     </div>
     <script type="module" src="authentication.js"></script>
@@ -50,6 +76,8 @@
         function showForm(formId) {
             document.getElementById('loginForm').style.display = 'none';
             document.getElementById('signupForm').style.display = 'none';
+            document.getElementById('passwordReset').style.display = 'none';
+            document.getElementById('userForm').style.display = 'none';
             document.getElementById(formId).style.display = 'block';
         }
             showForm('loginForm');

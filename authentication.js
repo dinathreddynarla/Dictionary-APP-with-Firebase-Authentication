@@ -1,6 +1,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-    import { getFirestore,setDoc,doc,updateDoc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
-    import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+    import { getFirestore,setDoc,doc,updateDoc,getDoc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+    import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
     const firebaseConfig = {
         apiKey: "AIzaSyDk-jY4LDcRw4or4A42BmH0_kbyOqQ3-Cc",
         authDomain: "authentication-app-6cf14.firebaseapp.com",
@@ -14,6 +14,7 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
+    const provider = new GoogleAuthProvider(app);
     const auth = getAuth(app);
 
     //sign up
@@ -25,7 +26,7 @@
         let signup_password = document.getElementById("signup-password").value
         let realdate = currentTime()
         let history = [];
-        createUserWithEmailAndPassword(auth, signup_email, signup_password,signup_FullName)
+        createUserWithEmailAndPassword(auth, signup_email, signup_password)
         .then((userCredential) => {
             // Signed up 
             const user = userCredential.user;
@@ -85,5 +86,84 @@
         const date = ISTTime.toISOString();
         return date
         }
+        // Function to handle Google Sign-in
+        let gsign = document.getElementById("googlesignin")
+        gsign.addEventListener("click",()=>{
+                signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    // Check if user exists in the Firestore database
+                    getDoc(doc(db, "users", user.uid))
+                        .then(docSnap => {
+                            if (docSnap.exists()) {
+                                // If user exists, retrieve and display their data
+                                openDictionary()
+                            } else {
+                                // If user does not exist, show the form
+                                document.getElementById('userForm').style.display = 'block';
+                                document.getElementById('loginForm').style.display = 'none';
+                                document.getElementById('signupForm').style.display = 'none';
+
+                                // Pre-fill the email and fullname field with user's email
+                                document.getElementById('email').value = user.email;
+                                document.getElementById('fullName').value=user.displayName;
+                                // Handle form submission
+                                document.getElementById('profileForm').addEventListener('submit', (e) => {
+                                    e.preventDefault();
+                                    const fullName = document.getElementById('fullName').value;
+                                    const email = document.getElementById('email').value;
+                                    const username = document.getElementById('username').value;
+                                    const phone = document.getElementById('phone').value;
+                                    let realdate = currentTime()
+
+                                    // Save the new user data to Firestore
+                                    setDoc(doc(db, "users", user.uid), {
+                                        fullName: fullName,
+                                        email: email,
+                                        username:username,
+                                        history:[],
+                                        lastLogin : realdate,
+                                        phone: phone
+                                    }).then(() => {
+                                        console.log('User profile saved');
+                                        document.getElementById('userForm').style.display = 'none';
+                                        openDictionary()
+                                    }).catch((error) => {
+                                        console.error("Error saving user data:", error);
+                                    });
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error retrieving user data:", error);
+                        });
+                })
+                .catch((error) => {
+                    console.error("Error during sign-in:", error);
+                });
+            })
+            document.getElementById("resetPassword").addEventListener("click",()=>{
+                var resetMail = document.getElementById("reset-email").value;
+                sendPasswordResetEmail(auth, resetMail)
+                .then(() => {
+                    // Password reset email sent!
+                    // ..
+                    alert("reset Email sent")
+                    
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                });
         
-        
+            })         
+function userdata(){
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('signupForm').style.display = 'none';
+    document.getElementById('userdetails').style.display="block";
+}
+
+function openDictionary(){
+    window.open("dictionary.html","_self")
+}

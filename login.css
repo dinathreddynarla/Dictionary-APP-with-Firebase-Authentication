@@ -36,7 +36,8 @@ body {
 
 .container input[type="text"],
 .container input[type="email"],
-.container input[type="password"] {
+.container input[type="password"],
+.container input[type="date"]{
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -90,7 +91,7 @@ body {
     display: block;
 }
 
-#loginForm, #signupForm {
+#loginForm, #signupForm,#userdetails,#passwordReset{
     display: none;
 }
 

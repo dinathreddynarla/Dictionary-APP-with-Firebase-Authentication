@@ -15,6 +15,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth();
 let username = document.getElementById("user")
+let fullName =document.querySelector(".fullName")
+let userName =document.querySelector(".userName")
+let Gmail =document.querySelector(".Gmail")
+let displayHistory =document.getElementById("showHistory")
 //author state
 const user = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
@@ -23,7 +27,21 @@ onAuthStateChanged(auth, (user) => {
            if(docSnap.exists()){
                 let userdata =docSnap.data()
                console.log(userdata)
-               username.innerText=`Welcome, ${userdata.fullName}`
+                  username.innerText=`Welcome, ${userdata.fullName}`
+                  fullName.innerHTML=`<b>FullName:</b> ${userdata.fullName}`
+                  userName.innerHTML=`<b>UserName:</b> ${userdata.userName}`
+                  Gmail.innerHTML=`<b>UserName:</b> ${userdata.email}`
+                let History = userdata.history
+                console.log(History)
+                let count = 1
+                History.forEach(element => {
+                  let ele = document.createElement("h3")
+                  ele.innerText=`${count}. ${element}`
+                  count++
+                  displayHistory.append(ele)
+                });
+              
+
            }else{
                console.log("no data")
            }
@@ -33,8 +51,15 @@ onAuthStateChanged(auth, (user) => {
       window.open("index.html","_self");
     }
   });
+
+document.getElementById("history").addEventListener("click",()=>{
+  document.getElementById('showHistory').style.display = 'block';
+})
+document.getElementsByClassName("fa-arrow-left")[0].addEventListener("click",()=>{
+  document.getElementById('showHistory').style.display = 'none';
+})
 // let logout = document.getElementById("logout")
-let logout = document.getElementById("profile")
+let logout = document.getElementById("logout")
 logout.addEventListener("click",(e)=>{
     signOut(auth).then(() => {
         window.open("index.html","_self");
@@ -46,6 +71,18 @@ logout.addEventListener("click",(e)=>{
         alert(errorMessage)
       });
 })
+ let pos="flex"
+document.getElementById("profile").addEventListener("click",()=>{
+
+  document.querySelector(".profile_data").style.display=pos
+  if(pos=="flex"){
+    pos="none"
+  }else{
+    pos="flex"
+  }
+
+})
+
 let search  = document.getElementById("search-btn")
 search.addEventListener("click",()=>{
   addhistory();
@@ -57,7 +94,13 @@ let searchbar= document.getElementById("inp-word")
         }
     })
 
-function addhistory() {
+async function addhistory() {
+  let word = document.getElementById("inp-word").value;
+  const dictionaryResponse = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+  if (!dictionaryResponse.ok) {
+    console.error("Word not found in the dictionary API.");
+    return;
+  }
   const user = auth.currentUser;
   var localhistory = [];
   
@@ -74,6 +117,15 @@ function addhistory() {
           updateDoc(doc(db, "users", user.uid), {
             history: localhistory
           });
+          let History = userdata.history
+                console.log(History)
+                let count = 1
+                History.forEach(element => {
+                  let ele = document.createElement("h3")
+                  ele.innerText=`${count}. ${element}`
+                  count++
+                  displayHistory.append(ele)
+                });
         }
       }).catch(error => {
         console.error("Error fetching document: ", error);
