@@ -370,6 +370,10 @@ transform: translateX(0);
     z-index: 11;
    
 }
+.fa-arrow-left{
+    cursor: pointer;
+    font-weight: 700;
+}
 .hishead{
     display: flex;
     justify-content: flex-start;

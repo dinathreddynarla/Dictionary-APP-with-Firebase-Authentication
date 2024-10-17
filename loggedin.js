@@ -18,7 +18,7 @@ let username = document.getElementById("user")
 let fullName =document.querySelector(".fullName")
 let userName =document.querySelector(".userName")
 let Gmail =document.querySelector(".Gmail")
-let displayHistory =document.getElementById("showHistory")
+let displayHistory =document.getElementById("addHistory")
 //author state
 const user = auth.currentUser;
 onAuthStateChanged(auth, (user) => {
@@ -33,7 +33,7 @@ onAuthStateChanged(auth, (user) => {
                   Gmail.innerHTML=`<b>UserName:</b> ${userdata.email}`
                 let History = userdata.history
                 console.log(History)
-                displayHistory.innerHTML='<div class="hishead"><i class="fa-solid fa-arrow-left"></i><span>History</span></div>'
+                displayHistory.innerHTML=""
                 let count = 1
                 History.forEach(element => {
                   let ele = document.createElement("h3")
@@ -41,8 +41,6 @@ onAuthStateChanged(auth, (user) => {
                   count++
                   displayHistory.append(ele)
                 });
-              
-
            }else{
                console.log("no data")
            }
@@ -121,7 +119,7 @@ async function addhistory() {
           let History = userdata.history
                 console.log(History)
                 let count = 1
-                displayHistory.innerHTML='<div class="hishead"><i class="fa-solid fa-arrow-left"></i><span>History</span></div>'
+                displayHistory.innerHTML=""
                 History.forEach(element => {
                   let ele = document.createElement("h3")
                   ele.innerText=`${count}. ${element}`
