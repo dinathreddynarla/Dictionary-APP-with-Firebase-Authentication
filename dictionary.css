@@ -8,11 +8,18 @@ body {
     border-radius: 0.5rem;
     box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.2);
 }
+#dic {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+    color: #ff6f00;
+}
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     padding: 15px 20px;
     color: white;
     background: rgba(255, 255, 255, 0.1);
@@ -20,11 +27,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
 }
 
 .header h1 {
     margin: 0;
     font-size: 1.5em;
+    color: #ff6f00;
 }
 
 #profile {
@@ -44,9 +53,10 @@ body {
 .profile_data {
     position: absolute;
     color: #333;
-    right: 0;
     border-radius: 15px;
-    top: 100%;
+    left: 0%; 
+    top: 0%; 
+    /* transform: translate(-50%, -50%);  */
     box-sizing: border-box;
     width: 350px;
     height: auto;
@@ -54,13 +64,13 @@ body {
     flex-direction: column;
     gap: 10px;
     padding: 15px;
-    z-index: 10;
+    z-index: 99;
     border: 3px solid red;
     transition: all 0.3s ease-in-out;
 }
 
 .profile_data > span {
-    color: #00796B;
+    color: hwb(122 5% 52%);
     padding: 5px 10px;
     font-size: 1.2em;
     font-weight: bold;
@@ -75,16 +85,17 @@ body {
     box-sizing: border-box;
     position: absolute;
     color: black;
-    right: 0;
-    top: 100%;
+    left: 0%; 
+    top: 0%; 
+    /* transform: translate(-50%, -50%);  */
     width: 350px;
-    height: 400px;
+    height: 420px;
     padding: 10px;
     display: none;
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
-    z-index: 10;
+    z-index: 100;
     transition: all 0.3s ease-in-out;
 }
 #showHistory::-webkit-scrollbar {
@@ -101,11 +112,10 @@ body {
 }
 .profile_data, #showHistory {
     backdrop-filter: blur(50px);
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.7);
     border-radius: 15px; 
     border: 1px solid rgba(255, 255, 255, 0.7);
     border: 3px solid red;
-    z-index: 20;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); 
 }
 #showHistory:hover{
@@ -144,12 +154,6 @@ body {
 .new-text {
     color: #FF5252;
     font-size: 1.1em;
-}
-h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 3rem;
-    color: #ff6f00;
 }
 
 #search {
@@ -235,6 +239,10 @@ button:hover {
     transform: scale(1.02);
 }
 
+#result{
+    position: relative;
+    z-index: 1;
+}
 .images {
     display: flex;
     flex-wrap: wrap;
@@ -262,7 +270,6 @@ button:hover {
     padding: 1rem;
     border-radius: 0.3rem;
     font-size: 1.1rem;
-    position: relative;
     border-left: 0.5rem solid #ff6f00;
 }
 
@@ -276,8 +283,6 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-  
     margin-bottom: 1rem;
 }
 
@@ -371,8 +376,12 @@ transform: translateX(0);
     body {
         padding: 1.5rem;
     }
-
-    h1 {
+    .header h1 {
+        margin: 0;
+        font-size: 1.2em;
+        width: 50%;
+    }
+    #dic {
         font-size: 2.5rem;
     }
 

@@ -57,8 +57,6 @@ onAuthStateChanged(auth, (user) => {
     }
   });
 
-
-// let logout = document.getElementById("logout")
 let logout = document.getElementById("logout")
 logout.addEventListener("click",(e)=>{
     signOut(auth).then(() => {

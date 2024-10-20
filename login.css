@@ -142,12 +142,12 @@ body {
     font-weight: 600;
 }
 .container input[type="date"]{
-    width: 150px; /* Adjust width */
-    padding: 0.5rem; /* Adjust padding */
-    font-size: 0.9rem; /* Adjust font size */
-    border-radius: 0.3rem; /* Adjust border-radius */
-    border: 1px solid #ff6f00; /* Optional: styling the border */
-    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* Optional: shadow for better visibility */
+    width: 150px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-radius: 0.3rem; 
+    border: 1px solid #ff6f00;
+    box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 

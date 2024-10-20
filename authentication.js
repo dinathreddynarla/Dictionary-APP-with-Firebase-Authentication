@@ -100,11 +100,9 @@ onAuthStateChanged(auth, (user) => {
                             document.getElementById('userForm').style.display = 'block';
                             document.getElementById('loginForm').style.display = 'none';
                             document.getElementById('signupForm').style.display = 'none';
-                            
-                            // Pre-fill the email and fullname field with user's email
+                             
                             document.getElementById('g-email').value = user.email;
                             document.getElementById('g-fullName').value=user.displayName;
-                            // Handle form submission
                             document.getElementById('profileForm').addEventListener('submit', (e) => {
                                 e.preventDefault();
                                 const g_fullName = document.getElementById('g-fullName').value;
