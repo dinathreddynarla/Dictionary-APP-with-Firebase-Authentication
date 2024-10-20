@@ -92,13 +92,39 @@
                 document.getElementById('userForm').style.display = 'none';
                 document.getElementById(formId).style.display = 'block';
             }
+
+        
         showForm('loginForm');
-        let bgImages = ['image2.png', 'image3.png'];
+            const bgImages = ["image1.png", "image2.png", "image3.png"];
             let currentIndex = 0;
-            setInterval(() => {
-                document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
-                currentIndex = (currentIndex + 1) % bgImages.length;
-            }, 3000);
+            let intervalId;
+            
+            function updateBackground() {
+                const width = window.innerWidth;
+            
+                if (width < 560) {
+                    console.log(`Width: ${width}`);
+                    document.body.style.backgroundImage = 'url("Untitled.png")';
+                    
+                    if (intervalId) {
+                        clearInterval(intervalId);
+                        intervalId = null;
+                    }
+                } else {
+                    document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+                    
+                    if (!intervalId) {
+                        intervalId = setInterval(() => {
+                            currentIndex = (currentIndex + 1) % bgImages.length;
+                            document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
+                        }, 3000);
+                    }
+                }
+            }
+            
+            updateBackground();
+            window.addEventListener('resize', updateBackground);
+            
     </script>
 </body>
 </html>
