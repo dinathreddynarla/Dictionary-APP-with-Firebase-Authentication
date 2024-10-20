@@ -17,7 +17,10 @@ const auth = getAuth();
 let username = document.getElementById("user")
 let fullName =document.querySelector(".fullName")
 let userName =document.querySelector(".userName")
-let Gmail =document.querySelector(".Gmail")
+let Gmail =document.querySelector(".gmail")
+let Phone =document.querySelector(".phone")
+let Gender =document.querySelector(".gender")
+let DOB =document.querySelector(".dob")
 let displayHistory =document.getElementById("addHistory")
 //author state
 const user = auth.currentUser;
@@ -30,7 +33,10 @@ onAuthStateChanged(auth, (user) => {
                   username.innerText=`Welcome, ${userdata.fullName}`
                   fullName.innerHTML=`<b>FullName:</b> ${userdata.fullName}`
                   userName.innerHTML=`<b>UserName:</b> ${userdata.userName}`
-                  Gmail.innerHTML=`<b>UserName:</b> ${userdata.email}`
+                  Gmail.innerHTML=`<b>Gmail:</b> ${userdata.email}`
+                  Phone.innerHTML=`<b>Contact:</b> ${userdata.phone}`
+                  Gender.innerHTML=`<b>Gender:</b> ${userdata.gender}`
+                  DOB.innerHTML=`<b>Date-of-Birth:</b> ${userdata.dob}`
                 let History = userdata.history
                 console.log(History)
                 displayHistory.innerHTML=""
@@ -51,12 +57,7 @@ onAuthStateChanged(auth, (user) => {
     }
   });
 
-document.getElementById("history").addEventListener("click",()=>{
-  document.getElementById('showHistory').style.display = 'block';
-})
-document.getElementsByClassName("fa-arrow-left")[0].addEventListener("click",()=>{
-  document.getElementById('showHistory').style.display = 'none';
-})
+
 // let logout = document.getElementById("logout")
 let logout = document.getElementById("logout")
 logout.addEventListener("click",(e)=>{
@@ -70,17 +71,28 @@ logout.addEventListener("click",(e)=>{
         alert(errorMessage)
       });
 })
- let pos="flex"
-document.getElementById("profile").addEventListener("click",()=>{
-
-  document.querySelector(".profile_data").style.display=pos
-  if(pos=="flex"){
-    pos="none"
-  }else{
-    pos="flex"
-  }
-
+document.getElementById("history").addEventListener("click",()=>{
+  document.getElementById('showHistory').style.display = 'block';
 })
+document.getElementsByClassName("fa-arrow-left")[0].addEventListener("click",()=>{
+  document.getElementById('showHistory').style.display = 'none';
+})
+document.addEventListener('click', function(event) {
+  const profileData = document.querySelector('.profile_data');
+  const showHistory = document.querySelector('#showHistory');
+  const profileButton = document.querySelector('#profile');
+
+  if (!profileData.contains(event.target) && !showHistory.contains(event.target) && !profileButton.contains(event.target)) {
+      profileData.style.display = 'none';
+      showHistory.style.display = 'none';
+  }
+});
+document.querySelector('#profile').addEventListener('click', function(event) {
+  const profileData = document.querySelector('.profile_data');
+  const showHistory = document.querySelector('#showHistory');
+  profileData.style.display = profileData.style.display === 'flex' ? 'none' : 'flex';
+  showHistory.style.display = 'none';
+});
 
 let search  = document.getElementById("search-btn")
 search.addEventListener("click",()=>{
