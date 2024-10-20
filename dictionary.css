@@ -13,7 +13,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     padding: 15px 20px;
     color: white;
     background: rgba(255, 255, 255, 0.1);
@@ -55,13 +54,13 @@ body {
     flex-direction: column;
     gap: 10px;
     padding: 15px;
-    z-index: 99;
+    z-index: 10;
     border: 3px solid red;
     transition: all 0.3s ease-in-out;
 }
 
 .profile_data > span {
-    color: hwb(122 5% 52%);
+    color: #00796B;
     padding: 5px 10px;
     font-size: 1.2em;
     font-weight: bold;
@@ -79,13 +78,13 @@ body {
     right: 0;
     top: 100%;
     width: 350px;
-    height: 420px;
+    height: 400px;
     padding: 10px;
     display: none;
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
-    z-index: 100;
+    z-index: 10;
     transition: all 0.3s ease-in-out;
 }
 #showHistory::-webkit-scrollbar {
@@ -102,10 +101,11 @@ body {
 }
 .profile_data, #showHistory {
     backdrop-filter: blur(50px);
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 15px; 
     border: 1px solid rgba(255, 255, 255, 0.7);
     border: 3px solid red;
+    z-index: 20;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); 
 }
 #showHistory:hover{
@@ -235,10 +235,6 @@ button:hover {
     transform: scale(1.02);
 }
 
-#result{
-    position: relative;
-    z-index: -10;
-}
 .images {
     display: flex;
     flex-wrap: wrap;
@@ -266,6 +262,7 @@ button:hover {
     padding: 1rem;
     border-radius: 0.3rem;
     font-size: 1.1rem;
+    position: relative;
     border-left: 0.5rem solid #ff6f00;
 }
 
@@ -279,6 +276,8 @@ button:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+  
     margin-bottom: 1rem;
 }
 
