@@ -121,21 +121,24 @@ async function addhistory() {
           localhistory = userdata.history || [];
           
           let searchdata = document.getElementById("inp-word").value;
-          localhistory.push(searchdata);
-          
-          updateDoc(doc(db, "users", user.uid), {
-            history: localhistory
-          });
-          let History = userdata.history
-                console.log(History)
-                let count = 1
-                displayHistory.innerHTML=""
-                History.forEach(element => {
-                  let ele = document.createElement("h3")
-                  ele.innerText=`${count}. ${element}`
-                  count++
-                  displayHistory.append(ele)
-                });
+          if(!localhistory.includes(searchdata)){
+            
+            localhistory.push(searchdata);
+            
+            updateDoc(doc(db, "users", user.uid), {
+              history: localhistory
+            });
+            let History = userdata.history
+                  console.log(History)
+                  let count = 1
+                  displayHistory.innerHTML=""
+                  History.forEach(element => {
+                    let ele = document.createElement("h3")
+                    ele.innerText=`${count}. ${element}`
+                    count++
+                    displayHistory.append(ele)
+                  });
+          }
         }
       }).catch(error => {
         console.error("Error fetching document: ", error);

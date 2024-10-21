@@ -59,7 +59,7 @@ body {
     /* transform: translate(-50%, -50%);  */
     box-sizing: border-box;
     width: 350px;
-    height: auto;
+    height: 420px;
     display: none;
     flex-direction: column;
     gap: 10px;
@@ -438,8 +438,9 @@ transform: translateX(0);
     }
 
     input[type="text"] {
-        width: 96%;
+        width: 88%;
     }
+    
 
     .images img {
         width: 60vw;
@@ -450,8 +451,17 @@ transform: translateX(0);
     }
     .profile_data {
         background-color: #B2EBF2;
+        left: 50%; 
+        top: 50%; 
+        transform: translate(-50%, -50%); 
+        height: 440px;
     }
     #showHistory{
         background-color: rgba(255, 255, 255, 0.8);
+        left: 50%; 
+        top: 50%; 
+        transform: translate(-50%, -50%); 
+        height: 440px;
     }
+
 }
