@@ -92,30 +92,15 @@
 
         
         showForm('loginForm');
-            const bgImages = ["image1.png", "image2.png", "image3.png"];
-            let currentIndex = 0;
-            let intervalId;
             
             function updateBackground() {
                 const width = window.innerWidth;
             
                 if (width < 576) {
-                    console.log(`Width: ${width}`);
-                    document.body.style.backgroundImage = 'url("Untitled.png")';
+                    document.body.style.backgroundImage = 'url("mobile.png")';
                     
-                    if (intervalId) {
-                        clearInterval(intervalId);
-                        intervalId = null;
-                    }
                 } else {
-                    document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
-                    
-                    if (!intervalId) {
-                        intervalId = setInterval(() => {
-                            currentIndex = (currentIndex + 1) % bgImages.length;
-                            document.body.style.backgroundImage = `url(${bgImages[currentIndex]})`;
-                        }, 3000);
-                    }
+                    document.body.style.backgroundImage = 'url("desktop.png")';
                 }
             }
             
