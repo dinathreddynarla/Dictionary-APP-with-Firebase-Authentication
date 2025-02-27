@@ -17,6 +17,10 @@
                 <input type="email" id="login-email" name="email" placeholder="Email" required><br>
                 <input type="password" id="login-password" name="password" placeholder="Password" required><br>
                 <input type="submit" value="Login" id="login" name="login_submit">
+                <button id="googlesignin" class="toggle-buttons">Continue Up with Google</button>
+                <button id="guestsignin" class="toggle-buttons">Continue as Guest</button>
+                <button onclick="showForm('passwordReset')" class="toggle-buttons">Forgot Password?</button>
+                <p>Don't have an account? <button onclick="showForm('signupForm')">Sign Up</button></p>
             </div>
     
             <!-- Sign Up Form -->
@@ -37,6 +41,7 @@
                 <label for="signup-dob">Date of Birth:</label>
                 <input type="date" id="signup-dob" name="dob" required>
                 <input type="submit" value="Sign Up" id="signup" name="signup_submit">
+                <p>Already have an account? <button onclick="showForm('loginForm')">Login</button></p>
             </div>
             
             <!-- User Details Form -->
@@ -65,15 +70,7 @@
                 <h2>Reset Your Password</h2>
                 <input type="email" id="reset-email" name="email" placeholder="Enter valid email" required>
                 <input type="submit" value="Send Reset Mail" id="resetPassword" name="reset_Password">
-            </div>
-    
-            <div class="toggle-buttons">
-                <div class="loginsignup">
-                    <button onclick="showForm('loginForm')">Login</button>
-                    <button onclick="showForm('signupForm')">Sign Up</button>
-                </div>
-                <button id="googlesignin">Sign Up with Google</button>
-                <button onclick="showForm('passwordReset')">Forgot Password?</button>
+                <button onclick="showForm('loginForm')" class="btl">Back to Login</button>
             </div>
         </div>
         <div id="messageBox" class="message-box">
@@ -102,7 +99,7 @@
             function updateBackground() {
                 const width = window.innerWidth;
             
-                if (width < 560) {
+                if (width < 576) {
                     console.log(`Width: ${width}`);
                     document.body.style.backgroundImage = 'url("Untitled.png")';
                     

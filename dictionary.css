@@ -5,6 +5,7 @@ body {
     padding: 2rem;
     max-width: 80%;
     margin: auto;
+    margin-top: 1%;
     border-radius: 0.5rem;
     box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.2);
 }
@@ -158,13 +159,15 @@ body {
 
 #search {
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 0.5rem;
 }
 
 label {
     font-weight: bold;
     text-align: center;
-    width: 25%;
+    width: 20%;
     font-size: 1.5rem;
     color: #3f51b5;
 }
@@ -415,7 +418,9 @@ transform: translateX(0);
 
 @media screen and (max-width: 480px) {
     body {
+        margin-top: 5%;
         padding: 1rem;
+        max-width: 90%;
     }
 
     h1 {
@@ -423,17 +428,18 @@ transform: translateX(0);
     }
 
     label {
-        width: 40%;
-        font-size: 1rem;
+        display: none;
+        
     }
 
     input[type="text"], button {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     #search {
         flex-direction: column;
         align-items: stretch;
+        margin: auto;
         width: 96%;
     }
 
@@ -451,6 +457,7 @@ transform: translateX(0);
     }
     .profile_data {
         background-color: #B2EBF2;
+        width: 95%;
         left: 50%; 
         top: 50%; 
         transform: translate(-50%, -50%); 
@@ -458,6 +465,7 @@ transform: translateX(0);
     }
     #showHistory{
         background-color: rgba(255, 255, 255, 0.8);
+        width: 95%;
         left: 50%; 
         top: 50%; 
         transform: translate(-50%, -50%); 

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getFirestore,setDoc,doc,updateDoc,getDoc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getFirestore,setDoc,doc,getDoc} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 import { getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword,GoogleAuthProvider,signInWithPopup,sendPasswordResetEmail} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 const firebaseConfig = {
     apiKey: "AIzaSyDk-jY4LDcRw4or4A42BmH0_kbyOqQ3-Cc",
@@ -191,4 +191,23 @@ onAuthStateChanged(auth, (user) => {
             document.getElementById('messageBox').style.display = 'none';
         })
         
+ //Guest Login
+ let guest  = document.getElementById("guestsignin").addEventListener('click',(e)=>{
+    let login_email = "anonymous@gmail.com"
+    let login_password = "guest1234"
+    let realdate = currentTime()
+    signInWithEmailAndPassword(auth, login_email, login_password)
+    .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        updateTime(user)
         
+    })
+    .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        showMessage(errorMessage+" please Signup")
+
+    });
+
+})

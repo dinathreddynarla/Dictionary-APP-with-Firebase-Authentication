@@ -146,3 +146,20 @@ async function addhistory() {
     }
   });
 }
+
+function updateProfile() {
+  let profile = document.querySelector("#profile");
+  if (!profile) return; 
+
+  if (window.innerWidth < 576) {
+      profile.innerHTML = `<i class="fa-solid fa-user"></i>`;
+  } else {
+      profile.innerHTML = "Profile";
+  }
+}
+
+updateProfile();
+
+window.addEventListener('resize', updateProfile);
+
+

@@ -24,7 +24,7 @@ body {
     height: 10vh;
     display: flex;
     justify-content: center;
-    margin-top: 1%;
+    margin-top: 2%;
     align-items: center;
     border-radius: 20px;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3), -10px -10px 30px rgba(255, 255, 255, 0.7);
@@ -59,12 +59,16 @@ body {
 
 .container-wrapper {
     display: flex;
+    width: 30%;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    height: fit-content;
-    margin-top: 2%;
-    margin-left: 4%;
+    justify-content: flex-start;
+    /* border: 2px solid red; */
+    height: 70%;
+    margin-top: 5%;
+    margin-left: 6%;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 
 .toggle-buttons {
@@ -81,14 +85,10 @@ body {
     max-width: 340px;
 }
 
-.loginsignup {
-    display: flex;
-    justify-content: center;
-    gap: 10%;
-}
 
-.toggle-buttons button {
-    flex: 1;
+.toggle-buttons{
+    
+    text-align: center;
     margin: 4px;
     padding: 6px;
     background-color: rgba(33, 150, 243, 0.8);
@@ -100,7 +100,7 @@ body {
     font-size: 16px;
 }
 
-.toggle-buttons button:hover {
+.toggle-buttons{
     background-color: rgba(25, 118, 210, 0.8);
 }
 .container input[type="text"],
@@ -182,7 +182,7 @@ input[type="submit"]:hover, button[type="submit"]:hover {
     background-color: rgba(230, 74, 25, 0.8);
 }
 .container>h2{
-    font-size: 24px; 
+    font-size: 1.5rem; 
     margin-bottom: 10px;
     text-align: center;             
     color: white;                 
@@ -227,25 +227,76 @@ input[type="submit"]:hover, button[type="submit"]:hover {
 .ok-button:hover {
     background-color: #388e3c; 
 }
+.btl{
+    width: 100%;
+    border: 2px solid;
+    font-size: 1.1rem;
+    color: #ffff;
+    margin: auto;
+    padding: 5%;
+    text-align: center;
+    background-color: transparent;
+    font-weight: 600;
+}
 
-@media (max-width: 480px) {
+.container p {
+    width: 98%;
+    border: 2px solid;
+    font-size: 1.1rem;
+    margin: auto;
+    padding: 5%;
+    margin-bottom: 2%;
+    text-align: center;
+    
+}
+.container p button{
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    color: white;                 
+    font-weight: bold;            
+    text-shadow: 
+    1px 1px 0 black, 
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    0 1px 0 black,
+    0 -1px 0 black; 
+}
+
+@media (max-width: 576px) {
     body {
         background-size: cover;
         overflow: hidden;
     }
 
-    .container, #userForm, #passwordReset,.toggle-buttons {
+    .container, #userForm, #passwordReset{
         width: 100%;
         padding: 20px;
        
     }
+    .toggle-buttons {
+        padding: 10px;
+        width: 100%;
+    }
 
     .container-wrapper {
         width: 80%;
-        margin: auto;
-       margin-top: 10%;
+        height: 70%;
+        margin:auto ;
+        margin-top: 10%;
+        justify-content: flex-start;
+       /* border: 2px solid red; */
+       overflow: scroll;
+       scrollbar-width: none;
+       scroll-behavior: smooth;
     }
     .heading-container{
         margin-top: 5%;
+    }
+    .heading-container h1 {
+        font-size: 2.5rem;
     }
 }
