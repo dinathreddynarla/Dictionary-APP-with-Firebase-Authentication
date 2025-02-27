@@ -345,23 +345,26 @@ p {
     text-align: center;
 }
 .spinner {
-border: 8px solid #f3f3f3;
-border-top: 8px solid #3498db; 
-border-radius: 50%;
-width: 60px;
-height: 60px;
-animation: spin 2s linear infinite;
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-z-index: 1000;
-}
-
-@keyframes spin {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
-}
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db; 
+    border-radius: 50%;
+    width: 60px; /* Fixed size for better visibility */
+    height: 60px;
+    animation: spin 2s linear infinite;
+    
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 1000;
+  }
+  
+  /* Spinner Animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
 
 .main-word-section, .phonetic, .part-of-speech, .definition, .example, .synonyms, .antonyms, .images {
 opacity: 0;
@@ -471,5 +474,10 @@ transform: translateX(0);
         transform: translate(-50%, -50%); 
         height: 440px;
     }
+    .spinner {
+        top: 54%;
+        left: 40%;
+        transform: none; /* Removes translate for mobile */
+      }
 
 }
